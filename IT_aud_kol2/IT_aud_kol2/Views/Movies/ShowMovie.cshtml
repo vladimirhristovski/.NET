@@ -1,0 +1,27 @@
+﻿@model IT_aud_kol2.Models.MovieRentals
+@{
+    ViewBag.Title = "ShowMovie";
+}
+
+<h2>@Model.movie.Name</h2>
+
+<h5>Rating: @Model.movie.Rating</h5>
+
+<img src="@Model.movie.ImageURL" style="max-width:100px" />
+
+<h3>Clients:</h3>
+
+<ul>
+    @{
+        int i = 0;
+        foreach (var client in Model.clients)
+        {
+            <li>
+                <a href="/Movies/ShowClient/@i">@client.Name, @client.MovieCard</a>
+                @*<a href="ShowClient?index=@i">@client.Name, @client.MovieCard</a>*@
+
+            </li>
+            i++;
+        }
+    }
+</ul>

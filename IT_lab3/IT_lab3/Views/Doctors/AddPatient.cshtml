@@ -1,0 +1,31 @@
+﻿@model IT_lab3.Models.Doctor
+@{
+    ViewBag.Title = "AddPatient";
+}
+
+<h2>Додадете пациент кај д-р @Model.Name</h2>
+
+@using (Html.BeginForm("AddPatientValidation", "Doctors"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Doctor</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.PID, new SelectList(Model.All_Patients, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PID, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.Id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Додади" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

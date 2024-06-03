@@ -1,0 +1,22 @@
+﻿@model List<IT_lab2.Models.EventModel>
+@{
+    ViewBag.Title = "GetAllEvents";
+}
+
+<h2>Events:</h2>
+
+<table style="border:1px solid black">
+    @{
+        int i = 0;
+
+        foreach (var e in Model)
+        {
+            <tr style="border:1px solid black">
+                <td style="border:1px solid black">@Html.ActionLink(e.Name, "ShowEvent", new { id = i })</td>
+                <td style="border:1px solid black">@Html.ActionLink("Edit", "EditEvent", new { id = i })</td>
+                <td style="border:1px solid black">@Html.ActionLink("Delete", "DeleteEvent", new { id = i })</td>
+            </tr>
+            i++;
+        }
+    }
+</table>

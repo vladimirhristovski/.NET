@@ -1,0 +1,21 @@
+﻿@model IT_aud_db_kol2.Models.AddToRoleModel
+@{
+    ViewBag.Title = "AddUserToRole";
+}
+
+<h2>Add user with this email to a role:</h2>
+
+@using (Html.BeginForm("AddUserToRoleValidate", "Account"))
+{
+    <div class="form-group">
+        @Html.LabelFor(f => f.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(f => f.Roles)
+        @Html.DropDownListFor(m => m.SelectedRole, new SelectList(Model.Roles), new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-default">Save</button>
+}
